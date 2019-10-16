@@ -10,7 +10,7 @@
 	</parent>
 
 	<groupId>dev.aisandbox</groupId>
-	<artifactId>demo</artifactId>
+	<artifactId>AISandbox-Demo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>demo</name>
 	<packaging>jar</packaging>
