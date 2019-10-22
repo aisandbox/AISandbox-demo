@@ -14,18 +14,26 @@ public class QTable {
     @Setter
     String tableID = null;
 
-    Map<String, Map<String,Double>> tableRows = new TreeMap<>();
+    @Getter
+    @Setter
+    double learningValue = 0.8;
 
-    public Map<String,Double> getRow(String state) {
+    @Getter
+    @Setter
+    double discount = 0.95;
+
+    Map<String, Map<String, Double>> tableRows = new TreeMap<>();
+
+    public Map<String, Double> getRow(String state) {
         return tableRows.get(state);
     }
 
-    public void initialiseState(String state,String[] moves) {
-        Map<String,Double> actions = new TreeMap<>();
+    public void initialiseState(String state, String[] moves) {
+        Map<String, Double> actions = new TreeMap<>();
         for (String action : moves) {
-            actions.put(action,0.0);
+            actions.put(action, 0.0);
         }
-        tableRows.put(state,actions);
+        tableRows.put(state, actions);
     }
 
     public void reset() {

@@ -1,4 +1,4 @@
-package dev.aisandbox.demo.maze.qlearning;
+package dev.aisandbox.demo.maze.random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
@@ -9,17 +9,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
-import java.util.logging.Logger;
 
 @Controller
-@RequestMapping("/maze/q")
-public class MazeQLearningUI {
+@RequestMapping("/maze/random")
+public class MazeRandomUI {
 
-    private static final Logger LOG = Logger.getLogger(MazeQLearningUI.class.getName());
     @Autowired
     Environment environment;
-    @Autowired
-    QTable memory;
 
     @GetMapping("/index.html")
     public String index(Model model) {
@@ -30,8 +26,6 @@ public class MazeQLearningUI {
             model.addAttribute("ip", "localhost");
         }
         model.addAttribute("port",environment.getProperty("local.server.port"));
-        model.addAttribute("qtable",memory);
-        return "mazeQLearning";
+         return "mazeRandom";
     }
-
 }
