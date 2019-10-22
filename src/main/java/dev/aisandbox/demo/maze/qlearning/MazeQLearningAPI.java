@@ -19,8 +19,8 @@ public class MazeQLearningAPI {
 
     private static final Logger LOG = Logger.getLogger(MazeQLearningAPI.class.getName());
 
-    private static final double LEARN_RATE = 0.7;
-    private static final double DISCOUNT_FACTOR = 0.9;
+    private static final double LEARN_RATE = 1.0;
+    private static final double DISCOUNT_FACTOR = 0.95;
 
     // Storage for all of the QTables
     @Autowired
