@@ -1,24 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>AI Sandbox Demo</title>
+	<meta charset="UTF-8">
+	<title>AI Sandbox Demo</title>
+	<link rel="stylesheet" href="css/bootstrap.min.css"/>
 </head>
 <body>
-<h1>API Endpoints</h1>
-<table>
-    <thead>
-    <tr>
-        <th>Scenario</th>
-        <th>Implementation</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-        <td>Maze</td>
-        <td><a href="maze/index.html">Q-Learning Algorithm<a/></td>
-    </tr>
-    </tbody>
-</table>
+	<nav class="navbar bg-light navbar-light navbar-expand-sm">
+		<div class="container">
+			<a class="navbar-brand" href="/"><img src="images/logo-small.png"> AI Sandbox</a>
+			<div class="navbar-nav">
+				<a class="nav-item nav-link" href='https://www.aisandbox.dev/'>Website</a>
+			</div>
+		</div>
+	</nav>
+	<div class="container pt-3">
+		<h1>Demo APIs Endpoints</h1>
+		<p>Sorted by simulation</p>
+		<h2>Maze</h2>
+		<ul>
+			<li><a href="maze/random/index.html">Random Movement</a></li>
+			<li><a href="maze/q/index.html">Q-Learning Algorithm</a></li>
+		</ul>
+	</div>
 </body>
+<script src="js/jquery.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
 </html>

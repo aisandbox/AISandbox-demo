@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>AI Sandbox Demo</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+</head>
+<body>
+<nav class="navbar bg-light navbar-light navbar-expand-sm">
+    <div class="container">
+        <a class="navbar-brand" href="/"><img src="/images/logo-small.png"> AI Sandbox</a>
+        <div class="navbar-nav">
+            <a class="nav-item nav-link" href='https://www.aisandbox.dev/'>Website</a>
+        </div>
+    </div>
+</nav>
+<div class="container pt-3">
+    <h1>
+        Maze - Random Movement
+    </h1>
+    <p>This API will simply pick a random direction, from the ones given in the config. It will not remember anything about previous moves or where the exit is. As such it is unlikely to ever finish a large maze.</p>
+    <div class="alert alert-primary col-6 mx-auto" role="alert">
+        <h4 class="alert-heading">Agent URL</h4>
+        <p>Use the following URL when configuring the Agent in AI Sansbox:</p>
+        <hr>
+        <p class="mb-0">http://<span th:text="${ip}">localhost</span>:<span th:text="${port}">8080</span>/ai/maze/random</p>
+    </div>
+
+</body>
+<script src="/js/jquery.min.js"></script>
+<script src="/js/popper.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+</html>
