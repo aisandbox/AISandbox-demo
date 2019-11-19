@@ -16,15 +16,14 @@
 </nav>
 <div class="container pt-3">
     <h1>
-        Maze - Random Movement
+        Mine - Rule Base Solver
     </h1>
-    <p>This API will simply pick a random direction, from the ones given in the config. It will not remember anything
-        about previous moves or where the exit is. As such it is unlikely to ever finish a large maze.</p>
+    <p>Pick Squares based on a predefined ruleset</p>
     <div class="alert alert-primary col-6 mx-auto" role="alert">
         <h4 class="alert-heading">Agent URL</h4>
         <p>Use the following URL when configuring the Agent in AI Sansbox:</p>
         <hr>
-        <p class="mb-0">http://<span th:text="${ip}">localhost</span>:<span th:text="${port}">8080</span>/ai/maze/random
+        <p class="mb-0">http://<span th:text="${ip}">localhost</span>:<span th:text="${port}">8080</span>/ai/mine/rules
         </p>
     </div>
 </div>
