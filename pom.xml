@@ -12,12 +12,16 @@
 	<groupId>dev.aisandbox</groupId>
 	<artifactId>AISandbox-Demo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>demo</name>
+	<name>AISandbox Demo</name>
 	<packaging>jar</packaging>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
 		<java.version>11</java.version>
+
+		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
+		<sonar.organization>aisandbox</sonar.organization>
+		<sonar.projectKey>AISandbox_Demo</sonar.projectKey>
 	</properties>
 
 	<dependencies>
@@ -48,6 +52,11 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.sonarsource.scanner.maven</groupId>
+				<artifactId>sonar-maven-plugin</artifactId>
+				<version>3.7.0.1746</version>
 			</plugin>
 		</plugins>
 	</build>
