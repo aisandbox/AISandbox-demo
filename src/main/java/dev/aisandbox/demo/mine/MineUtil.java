@@ -1,5 +1,8 @@
-package dev.aisandbox.demo.maze;
+package dev.aisandbox.demo.mine;
 
+import lombok.experimental.UtilityClass;
+
+@UtilityClass
 public class MineUtil {
     public static char[][] readMineGrid(String[] rows) {
         char[][] grid = new char[rows[0].length()][rows.length];

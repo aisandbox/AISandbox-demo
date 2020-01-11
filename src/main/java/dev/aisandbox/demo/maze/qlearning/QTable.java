@@ -18,7 +18,7 @@ public class QTable {
 
     private static final Logger LOG = Logger.getLogger(QTable.class.getName());
 
-    private final static int SCALE = 25;
+    private static final int SCALE = 25;
     @Getter
     String tableID = null;
     @Getter
@@ -84,11 +84,11 @@ public class QTable {
         for (int x = 0; x < width; x++) {
             for (int y = 0; y < height; y++) {
                 String state = QTable.toStateString(x, y);
-                Map<String, Double> actions = new TreeMap<>();
+                Map<String, Double> actionMap = new TreeMap<>();
                 for (String action : moves) {
-                    actions.put(action, startingValue);
+                    actionMap.put(action, startingValue);
                 }
-                tableRows.put(state, actions);
+                tableRows.put(state, actionMap);
             }
         }
     }
@@ -143,6 +143,10 @@ public class QTable {
                 min = bestValue;
             }
         }
+        // check for max==min - this would cause a devide by zero error
+        if (max==min) {
+            max = min +1.0;
+        }
 
         for (int x = 0; x < width; x++) {
             for (int y = 0; y < height; y++) {
@@ -187,6 +191,8 @@ public class QTable {
                     case "West":
                         g.drawImage(sprites.get(19), x * SCALE, y * SCALE, null);
                         break;
+                    default:
+                        LOG.warning("Unexpected direction '"+getBestAction(state)+"'");
                 }
             }
         }

@@ -1,6 +1,6 @@
 package dev.aisandbox.demo.mine.rules;
 
-import dev.aisandbox.demo.maze.MineUtil;
+import dev.aisandbox.demo.mine.MineUtil;
 import dev.aisandbox.demo.mine.api.MineRequest;
 import dev.aisandbox.demo.mine.api.MineResponse;
 import dev.aisandbox.demo.mine.api.Move;
