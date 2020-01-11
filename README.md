@@ -1,2 +1,2 @@
 # AISandbox-demo
-Demo framework to show AISandbox capabilities
+Demo framework to show AISandbox capabilities.
