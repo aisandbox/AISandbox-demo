@@ -22,6 +22,12 @@
 		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
 		<sonar.organization>aisandbox</sonar.organization>
 		<sonar.projectKey>AISandbox_Demo</sonar.projectKey>
+	        <sonar.projectKey>aisandbox_AISandbox-Client</sonar.projectKey>
+	        <sonar.core.codeCoveragePlugin>jacoco</sonar.core.codeCoveragePlugin>
+	        <sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
+	        <sonar.jacoco.reportPath>${project.basedir}/target/jacoco.exec</sonar.jacoco.reportPath>
+	        <sonar.java.binaries>${project.basedir}/target/classes</sonar.java.binaries>
+	        <sonar.java.test.binaries>${project.basedir}/target/test-classes</sonar.java.test.binaries>
 	</properties>
 
 	<dependencies>
@@ -58,6 +64,20 @@
 				<artifactId>sonar-maven-plugin</artifactId>
 				<version>3.7.0.1746</version>
 			</plugin>
+            		<plugin>
+                		<groupId>org.apache.maven.plugins</groupId>
+                		<artifactId>maven-dependency-plugin</artifactId>
+                		<version>3.1.1</version>
+                		<executions>
+                    			<execution>
+                        			<id>copy-dependencies</id>
+			                        <phase>package</phase>
+			                        <goals>
+			                            <goal>copy-dependencies</goal>
+			                        </goals>
+                    			</execution>
+                		</executions>
+		         </plugin>
 		</plugins>
 	</build>
 
