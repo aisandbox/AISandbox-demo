@@ -36,6 +36,7 @@ public class MineRandomAPI {
                 move = new Move(x,y,rand.nextBoolean());
             }
         }
+        LOG.fine("Random move "+move.toString());
         response.setMoves(new Move[] {move});
         return response;
     }
