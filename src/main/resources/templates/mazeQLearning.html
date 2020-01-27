@@ -1,78 +1,79 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>AI Sandbox Demo</title>
-    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+  <meta charset="UTF-8">
+  <title>AI Sandbox Demo</title>
+  <link rel="stylesheet" href="/css/bootstrap.min.css"/>
 </head>
 <body>
 <nav class="navbar bg-light navbar-light navbar-expand-sm">
-    <div class="container">
-        <a class="navbar-brand" href="/"><img src="/images/logo-small.png"> AI Sandbox</a>
-        <div class="navbar-nav">
-            <a class="nav-item nav-link" href='https://www.aisandbox.dev/'>Website</a>
-        </div>
+  <div class="container">
+    <a class="navbar-brand" href="/"><img src="/images/logo-small.png"> AI Sandbox</a>
+    <div class="navbar-nav">
+      <a class="nav-item nav-link" href='https://www.aisandbox.dev/'>Website</a>
     </div>
+  </div>
 </nav>
 <div class="container pt-3">
-    <h1>Maze Index</h1>
-    <p>This is a simple implementation of the Q-Learning algorithm (<a href="https://en.wikipedia.org/wiki/Q-learning" target="_blank">more information here</a>).</p>
-    <p class="text-center">
-        \( Q\left(s_t,a_t\right)\leftarrow\left(1-\alpha\right)\times Q\left(s_t,a_t\right)+\alpha\times\left(r_t+\gamma\times\underset a{max}\;Q\left(s_{t+1},a\right)\right) \)
-    </p>
-    <div class="alert alert-primary col-6 mx-auto" role="alert">
-        <h4 class="alert-heading">Agent URL</h4>
-        <p>Use the following URL when configuring the Agent in AI Sandbox:</p>
-        <hr>
-        <p class="mb-0">http://<span th:text="${ip}">localhost</span>:<span th:text="${port}">8080</span>/ai/maze/q</p>
-    </div>
-    </h2>
-    <h2>Q Table</h2>
-    <p>Current board = <span th:text="${qtable.tableID}">Unknown</span></p>
-    <img src="image.png" th:if="${qtable.imageWidth}>0"/>
-    <h2>Update Q Values</h2>
-    <form action="#" method="post">
+  <h1>Maze Index</h1>
+  <p>This is a simple implementation of the Q-Learning algorithm (<a
+      href="https://en.wikipedia.org/wiki/Q-learning" target="_blank">more information here</a>).
+  </p>
+  <p class="text-center">
+    \( Q\left(s_t,a_t\right)\leftarrow\left(1-\alpha\right)\times
+    Q\left(s_t,a_t\right)+\alpha\times\left(r_t+\gamma\times\underset
+    a{max}\;Q\left(s_{t+1},a\right)\right) \)
+  </p>
+  <div class="alert alert-primary col-6 mx-auto" role="alert">
+    <h4 class="alert-heading">Agent URL</h4>
+    <p>Use the following URL when configuring the Agent in AI Sandbox:</p>
+    <hr>
+    <p class="mb-0">http://<span th:text="${ip}">localhost</span>:<span
+        th:text="${port}">8080</span>/ai/maze/q</p>
+  </div>
+  </h2>
+  <h2>Q Table</h2>
+  <p>Current board = <span th:text="${qtable.tableID}">Unknown</span></p>
+  <img src="image.png" th:if="${qtable.imageWidth}>0"/>
+  <h2>Update Q Values</h2>
+  <form action="#" th:action="@{'/maze/q/setAlpha'}" method="post">
     <div class="form-group row">
-        <label for="learningrate" class="col-sm-2 col-form-label">Learning Rate \(\alpha\)</label>
-        <div class="col-sm-8">
-            <input id="learningrate" class="form-control" type="range" min="0" max="1" step="0.01" oninput="learningrateoutput.value=learningrate.value"/>
-        </div>
-        <div class="col-sm-1">
-            <output id="learningrateoutput">0.5</output>
-        </div>
-        <div class="col-sm-1">
-            <button type="submit" class="btn btn-primary">Update</button>
-        </div>
+      <label for="learningrate" class="col-sm-2 col-form-label">Learning Rate \(\alpha\)</label>
+      <div class="col-sm-8">
+        <input id="learningrate" name="learningrate" class="form-control" type="range" min="0"
+               max="1" step="0.01" oninput="learningrateoutput.value=learningrate.value"
+               th:value="${qtable.learningValue}"/>
+      </div>
+      <div class="col-sm-1">
+        <output id="learningrateoutput" th:text="${qtable.learningValue}">0.5</output>
+      </div>
+      <div class="col-sm-1">
+        <button type="submit" class="btn btn-primary">Update</button>
+      </div>
     </div>
-</form>
-    <form action="#" method="post">
-        <div class="form-group row">
-            <label for="discount" class="col-sm-2 col-form-label">Discount \(\gamma\)</label>
-            <div class="col-sm-8">
-                <input id="discount" class="form-control" type="range" min="0" max="1" step="0.01" oninput="discountoutput.value=discount.value"/>
-            </div>
-            <div class="col-sm-1">
-                <output id="discountoutput">0.5</output>
-            </div>
-            <div class="col-sm-1">
-                <button type="submit" class="btn btn-primary">Update</button>
-            </div>
-        </div>
-    </form>
-    <form action="#" method="post">
-        <div class="form-group row">
-            <label for="initial" class="col-sm-2 col-form-label">Reset Q-Table</label>
-            <div class="col-sm-9 text-right">
-                <select id="initial">
-                    <option>Reset to zero</option>
-                    <option>Reset to +1000</option>
-                </select>
-            </div>
-            <div class="col-sm-1">
-                <button type="submit" class="btn btn-primary">Update</button>
-            </div>
-        </div>
-    </form>
+  </form>
+  <form action="#" th:action="@{'/maze/q/setDiscount'}" method="post">
+    <div class="form-group row">
+      <label for="discount" class="col-sm-2 col-form-label">Discount \(\gamma\)</label>
+      <div class="col-sm-8">
+        <input id="discount" name="discount" class="form-control" type="range" min="0" max="1"
+               step="0.01" oninput="discountoutput.value=discount.value"
+               th:value="${qtable.discount}"/>
+      </div>
+      <div class="col-sm-1">
+        <output id="discountoutput" th:text="${qtable.discount}">0.5</output>
+      </div>
+      <div class="col-sm-1">
+        <button type="submit" class="btn btn-primary">Update</button>
+      </div>
+    </div>
+  </form>
+  <div class="row">
+    <div class="col-sm-6">Reset Q-Table</div>
+    <div class="col-sm-2"><a href="#" th:href="@{/maze/q/reset?start=-1000}" class="btn btn-primary">Rest to -1000</a></div>
+    <div class="col-sm-2"><a href="#" th:href="@{/maze/q/reset?start=0}" class="btn btn-primary">Rest to 0</a></div>
+    <div class="col-sm-2"><a href="#" th:href="@{/maze/q/reset?start=1000}" class="btn btn-primary">Rest to +1000</a></div>
+  </div>
 </div>
 </body>
 <script src="/js/jquery.min.js"></script>
@@ -82,6 +83,6 @@
   MathJax = {
     tex: {inlineMath: [ ['\\(', '\\)'] ]}
   };
-  </script>
+</script>
 <script id="MathJax-script" src="/mathjax/tex-chtml.js"></script>
 </html>
