@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>AI Sandbox Demo</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+</head>
+<body>
+<nav class="navbar bg-light navbar-light navbar-expand-sm">
+    <div class="container">
+        <a class="navbar-brand" href="/"><img src="/images/logo-small.png"> AI Sandbox</a>
+        <div class="navbar-nav">
+            <a class="nav-item nav-link" href='https://www.aisandbox.dev/'>Website</a>
+        </div>
+    </div>
+</nav>
+<div class="container pt-3">
+    <h1>
+        Twisty - Easy Algorithm
+    </h1>
+    <p>This solves twisty puzzles based on the "easy" solution found at <a href="https://ruwix.com/">ruwix.com</a></p>
+    <p>Currently implemented for</p>
+    <ul><li>3x3x3 Cubes</li></ul>
+    <div class="alert alert-primary col-6 mx-auto" role="alert">
+        <h4 class="alert-heading">Agent URL</h4>
+        <p>Use the following URL when configuring the Agent in AI Sandbox:</p>
+        <hr>
+        <p class="mb-0">http://<span th:text="${ip}">localhost</span>:<span th:text="${port}">8080</span>/ai/twisty/easy
+        </p>
+    </div>
+</div>
+</body>
+<script src="/js/jquery.min.js"></script>
+<script src="/js/popper.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+</html>

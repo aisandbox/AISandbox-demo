@@ -1,9 +1,5 @@
 package dev.aisandbox.demo.twisty.random;
 
-import dev.aisandbox.demo.mine.MineUtil;
-import dev.aisandbox.demo.mine.api.MineRequest;
-import dev.aisandbox.demo.mine.api.MineResponse;
-import dev.aisandbox.demo.mine.api.Move;
 import dev.aisandbox.demo.twisty.api.TwistyRequest;
 import dev.aisandbox.demo.twisty.api.TwistyResponse;
 import lombok.extern.slf4j.Slf4j;
