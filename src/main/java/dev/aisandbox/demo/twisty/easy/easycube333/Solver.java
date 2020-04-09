@@ -10,11 +10,25 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class Solver implements TwistySolver {
 
-  List<SolverAlgorithm> algorithms = List.of(
-      new Orientation(),
-      new WhiteCrossGreen(),
-      new WhiteCrossRed()
-  );
+  List<SolverAlgorithm> algorithms =
+      List.of(
+          new Orientation(),
+          new WhiteCrossGreen(),
+          new WhiteCrossRed(),
+          new WhiteCrossOrange(),
+          new WhiteCrossBlue(),
+          new WhiteCorners1(),
+          new WhiteCorners2(),
+          new WhiteCorners3(),
+          new WhiteCorners4(),
+          new SecondLayer1(),
+          new SecondLayer2(),
+          new SecondLayer3(),
+          new SecondLayer4(),
+          new YellowCross(),
+          new YellowEdge1(),
+          new YellowEdge2(),
+          new YellowEdge3());
 
   @Override
   public String getPuzzleType() {
@@ -27,13 +41,14 @@ public class Solver implements TwistySolver {
   }
 
   @Override
-  public String getMoves(String puzzleType, String state, List<String> availableMoves) throws SolverException {
-    log.info("Solving from state {}",state);
+  public String getMoves(String puzzleType, String state, List<String> availableMoves)
+      throws SolverException {
+    log.info("Solving from state {}", state);
     for (SolverAlgorithm algorithm : algorithms) {
       if (algorithm.isValid(state)) {
-        log.info("claimed by {}",algorithm.getClass().getSimpleName());
+        log.info("claimed by {}", algorithm.getClass().getSimpleName());
         String moves = algorithm.getMoves(state);
-        log.info("Worked out moves {}",moves);
+        log.info("Worked out moves {}", moves);
         return moves;
       }
     }

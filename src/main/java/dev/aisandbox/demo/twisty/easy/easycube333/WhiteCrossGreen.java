@@ -9,7 +9,7 @@ public class WhiteCrossGreen implements SolverAlgorithm {
   @Override
   public boolean isValid(String state) {
     // If we've already solved the white side and turned the cube over - ignore
-    if (state.matches("....W..........RRR......GGG......OOO......BBBWWWWWWWWW")) return false;
+    if (state.matches("....Y..........RRR......GGG......OOO......BBBWWWWWWWWW")) return false;
     // if we've already got the white cross FIRST STEP
     if (state.matches("....W..W...........G.............................Y....")) return false;
     // otherwise return true
@@ -20,7 +20,7 @@ public class WhiteCrossGreen implements SolverAlgorithm {
   public String getMoves(String state) throws SolverException {
     log.info("Trying to move green/white edge to top {}", state);
     // find the green/white edge
-    Position p = Finder.findEdge(state, 'W', 'G');
+    EdgePosition p = Finder.findEdge(state, 'W', 'G');
     log.info("Found piece in position {}",p.name());
     switch (p) {
         // put pieces on the top row to the bottom

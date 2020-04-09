@@ -14,7 +14,7 @@ public class Orientation implements SolverAlgorithm{
   @Override
   public boolean isValid(String state) {
     // If we've already solved the white side and turned the cube over - ignore
-    if (state.matches("....W..........RRR......GGG......OOO......BBBWWWWWWWWW")) return false;
+    if (state.matches("....Y..........RRR......GGG......OOO......BBBWWWWWWWWW")) return false;
     // if we're already in position - ignore
     if(state.matches("....W........O........G........R........B........Y....")) return false;
     // otherwise return true

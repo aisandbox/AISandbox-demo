@@ -1,6 +1,7 @@
 package dev.aisandbox.demo.twisty.easy.easycube333;
 
-public enum Position {
+public enum EdgePosition {
+  // EDGE POSITIONS
   EDGE_TOP_FRONT,
   EDGE_TOP_BACK,
   EDGE_TOP_LEFT,
@@ -24,5 +25,7 @@ public enum Position {
   EDGE_BOTTOM_FRONT,
   EDGE_BOTTOM_RIGHT,
   EDGE_BOTTOM_BACK,
-  EDGE_BOTTOM_LEFT
+  EDGE_BOTTOM_LEFT,
+
+
 }
