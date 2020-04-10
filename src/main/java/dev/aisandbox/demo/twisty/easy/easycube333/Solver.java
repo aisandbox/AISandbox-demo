@@ -28,7 +28,9 @@ public class Solver implements TwistySolver {
           new YellowCross(),
           new YellowEdge1(),
           new YellowEdge2(),
-          new YellowEdge3());
+          new YellowEdge3(),
+          new YellowCornerPosition(),
+          new YellowCornerRotation());
 
   @Override
   public String getPuzzleType() {
