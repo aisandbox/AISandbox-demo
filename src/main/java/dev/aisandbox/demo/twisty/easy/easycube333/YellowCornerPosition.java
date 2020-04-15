@@ -4,7 +4,7 @@ import dev.aisandbox.demo.twisty.easy.SolverException;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class YellowCornerPosition implements SolverAlgorithm {
+public class YellowCornerPosition implements Solver3x3x3Algorithm {
 
   public static final String YELLOW_CORNER_SWITCH = "U R U' L' U R' U' L";
 

@@ -5,7 +5,7 @@ import dev.aisandbox.demo.twisty.easy.SolverHaltException;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class WhiteCrossGreen implements SolverAlgorithm {
+public class WhiteCrossGreen implements Solver3x3x3Algorithm {
   @Override
   public boolean isValid(String state) {
     // If we've already solved the white side and turned the cube over - ignore

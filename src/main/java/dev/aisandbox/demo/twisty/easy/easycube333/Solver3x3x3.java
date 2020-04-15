@@ -2,15 +2,15 @@ package dev.aisandbox.demo.twisty.easy.easycube333;
 
 import dev.aisandbox.demo.twisty.easy.SolverException;
 import dev.aisandbox.demo.twisty.easy.SolverHaltException;
-import dev.aisandbox.demo.twisty.easy.TwistySolver;
-import dev.aisandbox.demo.twisty.easy.TwistyTools;
 import java.util.List;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
 
 @Slf4j
-public class Solver implements TwistySolver {
+@Component
+public class Solver3x3x3 {
 
-  List<SolverAlgorithm> algorithms =
+  List<Solver3x3x3Algorithm> algorithms =
       List.of(
           new Orientation(),
           new WhiteCrossGreen(),
@@ -32,21 +32,10 @@ public class Solver implements TwistySolver {
           new YellowCornerPosition(),
           new YellowCornerRotation());
 
-  @Override
-  public String getPuzzleType() {
-    return TwistyTools.CUBE_333;
-  }
-
-  @Override
-  public String getAlgorithmName() {
-    return "Easy Solver";
-  }
-
-  @Override
   public String getMoves(String puzzleType, String state, List<String> availableMoves)
       throws SolverException {
     log.info("Solving from state {}", state);
-    for (SolverAlgorithm algorithm : algorithms) {
+    for (Solver3x3x3Algorithm algorithm : algorithms) {
       if (algorithm.isValid(state)) {
         log.info("claimed by {}", algorithm.getClass().getSimpleName());
         String moves = algorithm.getMoves(state);

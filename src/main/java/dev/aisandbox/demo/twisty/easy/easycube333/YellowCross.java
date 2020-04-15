@@ -4,7 +4,7 @@ import dev.aisandbox.demo.twisty.easy.SolverException;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class YellowCross implements SolverAlgorithm {
+public class YellowCross implements Solver3x3x3Algorithm {
 
   public static final String CROSS_MOVE = "F R U R' U' F'";
 

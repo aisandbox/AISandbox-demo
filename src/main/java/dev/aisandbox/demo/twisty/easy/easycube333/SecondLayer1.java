@@ -4,7 +4,7 @@ import dev.aisandbox.demo.twisty.easy.SolverException;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class SecondLayer1 implements SolverAlgorithm {
+public class SecondLayer1 implements Solver3x3x3Algorithm {
 
   public static final String SECOND_LEFT = "U' L' U L U F U' F'";
   public static final String SECOND_RIGHT = "U R U' R' U' F' U F";

@@ -7,7 +7,7 @@ import dev.aisandbox.demo.twisty.easy.SolverHaltException;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class YellowEdge2 implements SolverAlgorithm {
+public class YellowEdge2 implements Solver3x3x3Algorithm {
 
   @Override
   public boolean isValid(String state) {

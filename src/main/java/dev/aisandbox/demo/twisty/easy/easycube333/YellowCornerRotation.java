@@ -4,7 +4,7 @@ import dev.aisandbox.demo.twisty.easy.SolverException;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class YellowCornerRotation implements SolverAlgorithm {
+public class YellowCornerRotation implements Solver3x3x3Algorithm {
 
   public static final String YELLOW_CORNER_ROTATE = "R' D' R D R' D' R D";
 

@@ -5,7 +5,7 @@ import dev.aisandbox.demo.twisty.easy.SolverHaltException;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class YellowEdge1 implements SolverAlgorithm {
+public class YellowEdge1 implements Solver3x3x3Algorithm {
 
   public static final String EDGE_SWITCH = "R U R' U R U2 R' U";
 

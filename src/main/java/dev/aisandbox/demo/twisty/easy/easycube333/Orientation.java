@@ -2,14 +2,12 @@ package dev.aisandbox.demo.twisty.easy.easycube333;
 
 import dev.aisandbox.demo.twisty.easy.SolverException;
 import dev.aisandbox.demo.twisty.easy.SolverHaltException;
-import dev.aisandbox.demo.twisty.easy.TwistySolver;
-import dev.aisandbox.demo.twisty.easy.TwistyTools;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 @Slf4j
 @Component
-public class Orientation implements SolverAlgorithm{
+public class Orientation implements Solver3x3x3Algorithm {
 
   @Override
   public boolean isValid(String state) {
