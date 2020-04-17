@@ -31,11 +31,13 @@ public class TwistyEasyAPI {
   public TwistyResponse getSolverStep(@RequestBody TwistyRequest req) throws SolverException {
     String moves = null;
     switch (req.getPuzzleType()) {
-      case "Cube 3x3x3 (OBTM)":
+      case "Cube 3x3x3":
         moves = cubeSolver3x3x3.getMoves(req.getPuzzleType(), req.getState(), req.getMoves());
         break;
       default:
+        log.warn("Can't solve puzzle '{}'",req.getPuzzleType());
         throw new SolverHaltException("I don't know how to solve this puzzle.");
+
     }
     log.info("Returning moves {}", moves);
     return new TwistyResponse(moves);
