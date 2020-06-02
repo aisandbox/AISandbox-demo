@@ -34,10 +34,10 @@ public class TwistyEasyAPI {
   public TwistyResponse getSolverStep(@RequestBody TwistyRequest req) throws SolverException {
     String moves = null;
     switch (req.getPuzzleType()) {
-      case "Cube 3x3x3":
+      case "Cube 3x3x3 (OBTM)":
         moves = cubeSolver3x3x3.getMoves(req.getPuzzleType(), req.getState(), req.getMoves());
         break;
-      case "Cube 2x2x2":
+      case "Cube 2x2x2 (OBTM)":
         moves = cubeSolver2x2x2.getMoves(req.getState());
         break;
       default:
