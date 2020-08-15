@@ -5,6 +5,7 @@ import dev.aisandbox.demo.bandit.api.BanditResponse;
 import java.util.Random;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,7 +20,14 @@ public class BanditGreedyAPI {
   @PostMapping(
       path = "/ai/bandit/greedy",
       produces = {MediaType.APPLICATION_JSON_VALUE})
-  public BanditResponse getRandomResponse(@RequestBody BanditRequest req) {
+  public BanditResponse getRandomDefaultResponse(@PathVariable("e") double epsilon, @RequestBody BanditRequest req) {
+    return getRandomResponse(0.1,req);
+  }
+
+  @PostMapping(
+      path = "/ai/bandit/greedy/{e}",
+      produces = {MediaType.APPLICATION_JSON_VALUE})
+  public BanditResponse getRandomResponse(@PathVariable("e") double epsilon, @RequestBody BanditRequest req) {
     // record history
     if ((req.getHistory() != null)
         && (currentSession != null)
@@ -31,8 +39,8 @@ public class BanditGreedyAPI {
       currentSession = new BanditSession(req.getSessionID(), req.getBanditCount());
     }
     int arm;
-    if (rand.nextInt(10)==0) {
-      // 10% of the time pick a random bandit
+    if (rand.nextDouble()<=epsilon) {
+      // pick a random bandit if rand(0..1) < epsilon
       arm = rand.nextInt(req.getBanditCount());
       log.info("Picking random arm {}",arm);
     } else {

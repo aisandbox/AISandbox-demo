@@ -18,13 +18,14 @@
   <h1>
     Bandit - Epsilon Greedy
   </h1>
-  <p>This API will simply pick a random arm</p>
+  <p>This API will use the greedy epsilon algorithm to select a bandit.</p>
+  <form action=""
   <div class="alert alert-primary col-6 mx-auto" role="alert">
     <h4 class="alert-heading">Agent URL</h4>
     <p>Use the following URL when configuring the Agent in AI Sandbox:</p>
     <hr>
-    <p class="mb-0">http://<span th:text="${ip}">localhost</span>:<span th:text="${port}">8080</span>/ai/bandit/greedy
-    </p>
+    <p class="mb-0">http://<span th:text="${ip}">localhost</span>:<span th:text="${port}">8080</span>/ai/bandit/greedy/<i>&epsilon;</i></p>
+    <p class="mb-0">i.e. http://<span th:text="${ip}">localhost</span>:<span th:text="${port}">8080</span>/ai/bandit/greedy/0.10</p>
   </div>
 </div>
 </body>
