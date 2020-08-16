@@ -20,14 +20,16 @@ public class BanditGreedyAPI {
   @PostMapping(
       path = "/ai/bandit/greedy",
       produces = {MediaType.APPLICATION_JSON_VALUE})
-  public BanditResponse getRandomDefaultResponse(@PathVariable("e") double epsilon, @RequestBody BanditRequest req) {
-    return getRandomResponse(0.1,req);
+  public BanditResponse getRandomDefaultResponse(
+      @PathVariable("e") double epsilon, @RequestBody BanditRequest req) {
+    return getRandomResponse(0.1, req);
   }
 
   @PostMapping(
       path = "/ai/bandit/greedy/{e}",
       produces = {MediaType.APPLICATION_JSON_VALUE})
-  public BanditResponse getRandomResponse(@PathVariable("e") double epsilon, @RequestBody BanditRequest req) {
+  public BanditResponse getRandomResponse(
+      @PathVariable("e") double epsilon, @RequestBody BanditRequest req) {
     // record history
     if ((req.getHistory() != null)
         && (currentSession != null)
@@ -39,14 +41,18 @@ public class BanditGreedyAPI {
       currentSession = new BanditSession(req.getSessionID(), req.getBanditCount());
     }
     int arm;
-    if (rand.nextDouble()<=epsilon) {
-      // pick a random bandit if rand(0..1) < epsilon
-      arm = rand.nextInt(req.getBanditCount());
-      log.info("Picking random arm {}",arm);
-    } else {
+    // if there are unpulled bandits, pull them
+    if (!currentSession.getUnpulled().isEmpty()) {
+      log.info("Picking unpulled arm");
+      arm = currentSession.getUnpulled().iterator().next();
+    } else if (rand.nextDouble() >= epsilon) {
       // pick the best bandit
       arm = currentSession.getBestBandit();
-      log.info("Picking best arm {} from averages {}",arm,currentSession.getAverageReward());
+      log.info("Picking best arm {} from averages {}", arm, currentSession.getAverageReward());
+    } else {
+      // pick a random bandit if rand(0..1) < epsilon
+      arm = rand.nextInt(req.getBanditCount());
+      log.info("Picking random arm {}", arm);
     }
     // pull !
     BanditResponse response = new BanditResponse();
