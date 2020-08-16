@@ -40,6 +40,7 @@ public class BanditGreedyAPI {
     if ((currentSession == null) || (!currentSession.getSessionID().equals(req.getSessionID()))) {
       currentSession = new BanditSession(req.getSessionID(), req.getBanditCount());
     }
+    log.info("choose from {} bandits, pull {} of {}",req.getBanditCount(),req.getPull(),req.getPullCount());
     int arm;
     // if there are unpulled bandits, pull them
     if (!currentSession.getUnpulled().isEmpty()) {
