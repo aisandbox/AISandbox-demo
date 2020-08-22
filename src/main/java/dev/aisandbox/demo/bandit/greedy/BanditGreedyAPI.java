@@ -34,7 +34,7 @@ public class BanditGreedyAPI {
     if ((req.getHistory() != null)
         && (currentSession != null)
         && (currentSession.getSessionID().equals(req.getSessionID()))) {
-      currentSession.recordReward(req.getHistory().getPull(), req.getHistory().getReward());
+      currentSession.recordReward(req.getHistory().getChosenBandit(), req.getHistory().getReward());
     }
     // check for a new session
     if ((currentSession == null) || (!currentSession.getSessionID().equals(req.getSessionID()))) {
